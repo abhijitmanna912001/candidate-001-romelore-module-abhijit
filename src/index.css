@@ -1,7 +1,17 @@
-/* index.css */
+@import "tailwindcss";
+
+:root {
+  --color-primary: #B8860B;        /* gold */
+  --color-accent: #800000;         /* maroon */
+  --color-neutral-cream: #f9f7f4;  /* cream */
+  --color-parchment-gray: #e0dcd3; /* gray */
+  --font-headline: "Playfair Display", serif;
+  --font-body: "Lora", serif;
+}
+
 
 body {
   margin: 0;
-  font-family: 'Lora', serif;
-  background: #f9f7f4; /* off-white neutral background */
+  font-family: "Lora", serif;
+  background: #f9f7f4;
 }
