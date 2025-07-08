@@ -1,25 +1,13 @@
 export async function getRaffleStatus(userId) {
-  try {
-    const res = await fetch(`/api/raffle-status?userId=${userId}`);
-    if (!res.ok) throw new Error("Failed to fetch");
-    return await res.json();
-  } catch (err) {
-    console.error(err);
-    return { error: true };
-  }
+  const res = await fetch(`/.netlify/functions/raffle-status?userId=${userId}`);
+  return res.ok ? await res.json() : { error: true };
 }
 
 export async function joinRaffle(userId) {
-  try {
-    const res = await fetch("/api/raffle-entry", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId }),
-    });
-    if (!res.ok) throw new Error("Failed to join");
-    return await res.json();
-  } catch (err) {
-    console.error(err);
-    return { error: true };
-  }
+  const res = await fetch("/.netlify/functions/raffle-entry", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ userId }),
+  });
+  return res.ok ? await res.json() : { error: true };
 }
