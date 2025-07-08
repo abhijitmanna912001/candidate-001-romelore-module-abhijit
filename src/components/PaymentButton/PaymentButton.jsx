@@ -1,26 +1,20 @@
+import { createCheckoutSession } from "../../api/stripe";
+
 const PaymentButton = () => {
-  const handlePayment = async () => {
-    try {
-      const res = await fetch("/api/create-checkout-session", {
-        method: "POST",
-      });
-      const data = await res.json();
-      if (data.sessionId) {
-        window.location.href = `https://checkout.stripe.com/pay/${data.sessionId}`;
-      } else {
-        alert("Error, try again.");
-      }
-    } catch (err) {
-      console.error(err);
+  const handleClick = async () => {
+    const res = await createCheckoutSession();
+    if (res.sessionId) {
+      window.location.href = `https://checkout.stripe.com/pay/${res.sessionId}`;
+    } else {
       alert("Error, try again.");
     }
   };
 
   return (
-    <div className="mt-4">
+    <div className="flex justify-center">
       <button
-        onClick={handlePayment}
-        className="bg-[var(--primary-color)] hover:bg-[var(--accent-color)] text-black px-4 py-2 rounded cursor-pointer"
+        onClick={handleClick}
+        className="border-2 border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white transition-colors duration-300 px-6 py-2 rounded-full font-[var(--font-headline)] cursor-pointer"
       >
         Proceed to Payment
       </button>
