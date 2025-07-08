@@ -5,7 +5,7 @@ import RaffleWidget from "./components/RaffleWidget/RaffleWidget";
 
 const App = () => {
   return (
-    <div className="p-4">
+    <div className="p-4 max-w-4xl mx-auto">
       <p className="text-[var(--color-primary)] font-[var(--font-headline)] text-2xl">
         Hello RomeLore
       </p>
